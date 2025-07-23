@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="HbnB Logo" class="logo">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html" class="login-button">Login</a>
+        </nav>
+    </header>
+    <main>
+        <section class="place-details">
+            <h2>Nom du lieu</h2>
+            <div class="place-info">
+                <p><strong>Host:</strong> Prénom Nom</p>
+                <p><strong>Price per night:</strong> 120€</p>
+                <p><strong>Description:</strong> Superbe appartement avec vue...</p>
+                <p><strong>Amenities:</strong> WiFi, Piscine, Climatisation</p>
+            </div>
+        </section>
+        <section id="reviews">
+            <h3>Reviews</h3>
+            <div class="review-card">
+                <p><strong>User:</strong> Alice</p>
+                <p><strong>Rating:</strong> 5</p>
+                <p>Super séjour, je recommande !</p>
+            </div>
+            <!-- autres review-card -->
+
+            <form class="add-review form">
+                <h4>Add a Review</h4>
+                <label for="review-user">Your Name:</label>
+                <input type="text" id="review-user" name="user">
+
+                <label for="review-rating">Rating:</label>
+                <select id="review-rating" name="rating" required>
+                    <option value="">Select</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+                <label for="review-comment">Comment:</label>
+                <textarea id="review-comment" name="comment" required></textarea>
+
+                <button type="submit" class="login-button">Submit Review</button>
+            </form>
+        </section>
+    </main>
+    <footer>2025 Holberton-HBnB all rights reserved</footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
