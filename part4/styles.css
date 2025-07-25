@@ -3,53 +3,89 @@
   You'll probably need to override some of theese styles.
 */
 
+/* Thème World of Warcraft */
+
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'MedievalSharp', Arial, sans-serif;
+}
+
+html, body {
+    height: 100%;
 }
 
 body {
-    background-color: #f4f4f4;
-    color: #333;
+    background: linear-gradient(135deg, #79593c 0%, #3e2c14 100%);
+    color: #f8e9c1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
-    background-color: #333;
+    background: linear-gradient(90deg, #cec1b3 0%, #c9a13b 100%);
     color: #fff;
-    padding: 1rem;
+    padding: 1.5rem 2rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-
+    justify-content: center;
+    box-shadow: 0 4px 12px #000a;
+    border-bottom: 2px solid #c9a13b;
 }
 
 .logo {
-    height: 40px;
+    height: 48px;
+    filter: drop-shadow(0 0 6px #c9a13b);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px; /* espace entre les boutons */
+    flex: 1;
 }
 
 nav a {
-    color: #fff;
+    color: #f8e9c1;
     text-decoration: none;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
     font-weight: bold;
+    font-size: 1.25em;
+    transition: color 0.2s;
+}
+nav a:hover {
+    color: #ffd700;
+    text-shadow: 0 0 8px #c9a13b;
 }
 
 .login-button {
-    background-color: #0077cc;
-    color: #fff;
+    background: linear-gradient(90deg, #c9a13b 0%, #d4ccc2 100%);
+    color: #2c1a09 !important;
     border: none;
-    border-radius: 10px;
-    padding: 8px 16px;
+    border-radius: 12px;
+    padding: 12px 32px;
     cursor: pointer;
     text-decoration: none;
     margin-left: 1rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px #000a;
+    transition: background 0.2s;
+}
+.login-button:hover {
+    background: linear-gradient(90deg, #ffd700 0%, #c9a13b 100%);
+    color: #6b3e0a !important;
 }
 
 main {
+    flex: 1;
     padding: 2rem;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -57,51 +93,84 @@ main {
 .place-card, .review-card, .add-review, .form {
     margin: 20px 0;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #c9a13b;
     border-radius: 10px;
-    background: #fff;
+    background: linear-gradient(135deg, #3e2c14 80%, #6b3e0a 100%);
+    box-shadow: 0 2px 8px #000a;
+}
+
+.place-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.place-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #000a;
+    border: 2px solid #c9a13b;
+}
+.place-info {
+    flex: 1;
 }
 
 .details-button {
-    background-color: #0077cc;
-    color: #fff;
+    background: linear-gradient(90deg, #c9a13b 0%, #6b3e0a 100%);
+    color: #2c1a09;
     border: none;
     border-radius: 10px;
-    padding: 6px 12px;
+    padding: 6px 16px;
     cursor: pointer;
     margin-top: 10px;
-
+    font-weight: bold;
+    box-shadow: 0 2px 8px #000a;
+    transition: background 0.2s;
+}
+.details-button:hover {
+    background: linear-gradient(90deg, #ffd700 0%, #c9a13b 100%);
+    color: #6b3e0a;
 }
 
 .place-details {
     margin: 20px 0;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #c9a13b;
     border-radius: 10px;
-    background: #fff;
+    background: linear-gradient(135deg, #3e2c14 80%, #6b3e0a 100%);
+    box-shadow: 0 2px 8px #000a;
 }
 
 .place-info p, .review-card p {
     margin: 6px 0;
+    font-size: 1.05em;
 }
 
 .add-review h2, .add-review h4 {
     margin-top: 0;
+    color: #ffd700;
+    text-shadow: 0 0 8px #c9a13b;
 }
 
 .form label {
     display: block;
     margin: 10px 0 4px 0;
     font-weight: bold;
+    color: #ffd700;
 }
 
 .form input, .form select, .form textarea {
     width: 100%;
     padding: 8px;
     margin-bottom: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #c9a13b;
     border-radius: 6px;
     box-sizing: border-box;
+    background: #2c1a09;
+    color: #f8e9c1;
+    font-size: 1em;
 }
 
 .form textarea {
@@ -112,10 +181,13 @@ main {
 footer {
     text-align: center;
     margin-top: 40px;
-    border-top: 1px solid #ddd;
+    border-top: 2px solid #c9a13b;
     padding: 16px 0;
-    color: #888;
-    background: #fff;
+    color: #ffd700;
+    background: linear-gradient(90deg, #6b3e0a 0%, #c9a13b 100%);
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    box-shadow: 0 -2px 8px #000a;
 }
 
 .visually-hidden {
@@ -124,4 +196,46 @@ footer {
     width: 1px;
     height: 1px;
     overflow: hidden;
+}
+
+.wow-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    gap: 18px;
+}
+
+.wow-icon {
+    height: 56px;
+    filter: drop-shadow(0 0 8px #ffd700);
+}
+
+.wow-title {
+    font-family: 'MedievalSharp', Arial, sans-serif;
+    font-size: 4em; /* Taille augmentée */
+    color: #ffd700;
+    text-shadow: 0 0 16px #c9a13b, 0 0 4px #000;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+/* Agrandissement spécifique des champs login */
+#login-form input[type="email"],
+#login-form input[type="password"] {
+    height: 50px !important;
+    font-size: 1.5em !important;
+    padding: 0 18px !important;
+    border-radius: 12px !important;
+    margin-bottom: 24px !important;
+    background: #fff !important;
+    color: #2c1a09 !important;
+    border: 2px solid #c9a13b !important;
+    box-shadow: 0 0 12px #7e683255 !important;
+}
+#login-form input[type="email"]:focus,
+#login-form input[type="password"]:focus {
+    border: 2px solid #ffd700 !important;
+    box-shadow: 0 0 16px #ffd70099 !important;
+    outline: none !important;
 }

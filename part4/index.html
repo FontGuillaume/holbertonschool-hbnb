@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List of Places</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" type="image/png" href="images/favwow.png">
 </head>
 
 <body>
     <header>
-        <img src="images/logo.png" alt="HbnB Logo" class="logo">
+          <img src="images/icon.png" alt="WoW Icon" class="wow-icon">
+            <h1 class="wow-title">Welcome to HBnB</h1>
 
         <nav>
+            <a href="index.html" class="login-button">Home</a>
             <a href="login.html" id="login-link" class="login-button">Login</a>
-            <a href="index.html"></a>
         </nav>
     </header>
     <main>
@@ -29,9 +31,20 @@
             <h2 class="visually-hidden">Liste des lieux</h2>
             <!-- List of places will be populated dynamically -->
             <article class="place-card">
-                <h2>Appartement Paris</h2>
-                <p>Prix par nuit : 120€</p>
-                <button class="details-button">View Details</button>
+                <img src="images/Elwyn.webp" alt="Photo du lieu" class="place-img">
+                <div class="place-info">
+                    <h2>Cabane dans les bois</h2>
+                    <p>Prix par nuit : 100€</p>
+                    <button class="details-button">View Details</button>
+                </div>
+            </article>
+            <article class="place-card">
+                <img src="images/maison_montagne.webp" alt="Maison dans les montagnes" class="place-img">
+                <div class="place-info">
+                    <h2>Maison dans les montagnes</h2>
+                    <p>Prix par nuit : 80€</p>
+                    <button class="details-button">View Details</button>
+                </div>
             </article>
         </section>
     </main>
