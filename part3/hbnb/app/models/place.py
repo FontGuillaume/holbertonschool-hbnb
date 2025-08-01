@@ -15,6 +15,7 @@ class Place(BaseModel):
 
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(500), nullable=True)
+    image_url = db.Column(db.String(255), nullable=True)
     price = db.Column(db.Float(), nullable=False)
     latitude = db.Column(db.Float(), nullable=False)
     longitude = db.Column(db.Float(), nullable=False)
@@ -23,7 +24,7 @@ class Place(BaseModel):
     owner_id = db.Column(db.String(36), ForeignKey('users.id'), nullable=False)
     reviews = relationship('Review', backref='place', lazy=True)
 
-    def __init__(self, title, description, price, latitude, longitude):
+    def __init__(self, title, description, price, latitude, longitude, image_url=None):
         super().__init__()
 
         # Ici on vérifie si le titre existe et ne dépasse pas 100 charactères.
@@ -45,6 +46,7 @@ class Place(BaseModel):
         self.price = price
         self.latitude = latitude
         self.longitude = longitude
+        self.image_url = image_url
 
     def add_amenity(self, amenity):
         """Ajoute une amenité à cette place."""

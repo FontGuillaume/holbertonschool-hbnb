@@ -36,6 +36,7 @@ CREATE TABLE places (
     latitude FLOAT NOT NULL,
     longitude FLOAT NOT NULL,
     owner_id CHAR(36) NOT NULL,
+    image_url VARCHAR(255),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (owner_id) REFERENCES users(id)

@@ -122,6 +122,7 @@ class PlaceList(Resource):
                                    "latitude": place.latitude,
                                    "longitude": place.longitude,
                                    "owner_id": place.owner.id,
+                                   "image_url": place.image_url,
                                    "amenities": amenities_list})
                 else:
                     result.append({"id": place.id,
@@ -130,7 +131,8 @@ class PlaceList(Resource):
                                    "price": place.price,
                                    "latitude": place.latitude,
                                    "longitude": place.longitude,
-                                   "owner_id": place.owner.id})
+                                   "owner_id": place.owner.id,
+                                   "image_url": place.image_url})
             return result, 200
         except Exception as e:
             print(f"Error retrieving places: {str(e)}")
@@ -157,19 +159,42 @@ class PlaceResource(Resource):
                 "email": place.owner.email
             }
 
+            # Préparation de la liste des reviews (toujours AVANT les return)
+            reviews_list = []
+            if hasattr(place, "reviews") and place.reviews:
+                for review in place.reviews:
+                    reviews_list.append({
+                        "id": review.id,
+                        "text": review.text,
+                        "rating": review.rating,
+                        "user_id": review.user.id,
+                        "created_at": review.created_at.isoformat() if hasattr(review, "created_at") and review.created_at else None
+                    })
+
             # Préparation de la réponse avec ou sans aménités
             if place.amenities:
                 amenities_list = [{"id": amenity.id, "name": amenity.name}
                                   for amenity in place.amenities]
-                return {"id": place.id, "title": place.title,
-                        "description": place.description, "price": place.price,
-                        "latitude": place.latitude, "longitude": place.longitude,
-                        "owner": owner_details, "amenities": amenities_list}, 200
-
-            return {"id": place.id, "title": place.title,
+                return {
+                    "id": place.id,
+                    "title": place.title,
                     "description": place.description, "price": place.price,
                     "latitude": place.latitude, "longitude": place.longitude,
-                    "owner": owner_details}, 200
+                    "owner": owner_details,
+                    "amenities": amenities_list,
+                    "image_url": place.image_url,
+                    "reviews": reviews_list
+                }, 200
+
+            return {
+                "id": place.id,
+                "title": place.title,
+                "description": place.description, "price": place.price,
+                "latitude": place.latitude, "longitude": place.longitude,
+                "owner": owner_details,
+                "image_url": place.image_url,
+                "reviews": reviews_list
+            }, 200
         except Exception as e:
             print(f"Error retrieving place: {str(e)}")
             return {'error': 'An unexpected error occurred'}, 500

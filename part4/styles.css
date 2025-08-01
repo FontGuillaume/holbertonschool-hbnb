@@ -239,3 +239,13 @@ footer {
     box-shadow: 0 0 16px #ffd70099 !important;
     outline: none !important;
 }
+
+#place-image {
+    display: block;
+    margin: 0 auto;           /* centre l'image horizontalement */
+    max-width: 400px;         /* ajuste la largeur max selon ton design */
+    max-height: 300px;        /* ajuste la hauteur max selon ton design */
+    object-fit: cover;        /* pour un cadrage propre */
+    border-radius: 10px;      /* optionnel, coins arrondis */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* optionnel, ombre douce */
+}

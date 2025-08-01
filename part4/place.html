@@ -17,26 +17,21 @@
     </header>
     <main>
         <section class="place-details">
-            <h2>Nom du lieu</h2>
+            <h2 id="place-title"></h2>
             <div class="place-info">
-                <p><strong>Host:</strong> Prénom Nom</p>
-                <p><strong>Price per night:</strong> 120€</p>
-                <p><strong>Description:</strong> Superbe appartement avec vue...</p>
-                <p><strong>Amenities:</strong> WiFi, Piscine, Climatisation</p>
+                <p><strong>Host:</strong><span id="place-host"></span></p>
+                <p><strong>Price per night:</strong> <span id="place-price"></span></p>
+                <p><strong>Description:</strong> <span id="place-description"></span></p>
+                <p><strong>Amenities:</strong> <span id="place-amenities"></span></p>
+                <img id="place-image" />
             </div>
         </section>
         
         
         <section id="reviews">
             <h3>Reviews</h3>
-            <div class="review-card">
-                <p><strong>User:</strong> Alice</p>
-                <p><strong>Rating:</strong> 5</p>
-                <p>Super séjour, je recommande !</p>
-            </div>
-            <!-- autres review-card -->
-
-            <form class="add-review form">
+            <div id="place-reviews"></div>
+            <form id="add-review" class="add-review form">
                 <h4>Add a Review</h4>
                 <label for="review-user">Your Name:</label>
                 <input type="text" id="review-user" name="user">
@@ -56,6 +51,7 @@
 
                 <button type="submit" class="login-button">Submit Review</button>
             </form>
+            <div id="review-message"></div>
         </section>
     </main>
     <footer>2025 Holberton-HBnB all rights reserved</footer>

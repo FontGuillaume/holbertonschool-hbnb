@@ -11,8 +11,8 @@
 
 <body>
     <header>
-          <img src="images/icon.png" alt="WoW Icon" class="wow-icon">
-            <h1 class="wow-title">Welcome to HBnB</h1>
+        <img src="images/icon.png" alt="WoW Icon" class="wow-icon">
+        <h1 class="wow-title">Welcome to HBnB</h1>
 
         <nav>
             <a href="index.html" class="login-button">Home</a>
@@ -24,6 +24,10 @@
             <h2 class="visually-hidden">Filtres</h2>
             <label for="price-filter">Max Price:</label>
             <select id="price-filter">
+                <option value="All">All</option>
+                <option value="10">10</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
                 <!-- Options will be populated dynamically -->
             </select>
         </section>
@@ -34,17 +38,26 @@
                 <img src="images/Elwyn.webp" alt="Photo du lieu" class="place-img">
                 <div class="place-info">
                     <h2>Cabane dans les bois</h2>
-                    <p>Prix par nuit : 100€</p>
+                    <p>Prix par nuit : 10€</p>
                     <button class="details-button">View Details</button>
                 </div>
             </article>
             <article class="place-card">
                 <img src="images/maison_montagne.webp" alt="Maison dans les montagnes" class="place-img">
                 <div class="place-info">
-                    <h2>Maison dans les montagnes</h2>
-                    <p>Prix par nuit : 80€</p>
+                    <h2>Maison proche de la capitale</h2>
+                    <p>Prix par nuit : 100€</p>
                     <button class="details-button">View Details</button>
                 </div>
+            </article>
+            <article class="place-card">
+                <img src="images/Auberge.jpg" alt="Auberge dans la forêt" class="place-img">
+                <div class="place-info">
+                    <h2>Auberge de Compté-de-lOr</h2>
+                    <p>prix par nuit : 50€</p>
+                    <button class="details-button">View Details</button>
+                </div>
+
             </article>
         </section>
     </main>

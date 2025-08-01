@@ -16,7 +16,7 @@ api = Namespace('reviews', description='Review operations')
 review_model = api.model('Review', {
     'text': fields.String(required=True, description='Text of the review'),
     'rating': fields.Integer(required=True, description='Rating of the place (1-5)'),
-    'place_id': fields.String(required=True, description='ID of the place')  # <-- toujours demandé
+    'place_id': fields.String(required=True, description='ID of the place')
 })
 
 
@@ -286,3 +286,78 @@ class PlaceReviewList(Resource):
         except Exception as e:
             print(f"Error retrieving reviews for place: {str(e)}")
             return {'error': 'Failed to retrieve reviews for place'}, 500
+
+    @api.expect(review_model)
+    @api.response(201, 'Review successfully created')
+    @api.response(400, 'Invalid input data')
+    @api.response(401, 'Authentication required')
+    @api.response(404, 'Place not found')
+    @api.response(500, 'Server error')
+    @jwt_required()
+    def post(self, place_id):
+        """Create a review for a specific place (Authenticated users only)"""
+        try:
+            current_user = get_jwt_identity()
+            reviews_data = api.payload or {}
+
+            # Forcer l'utilisateur connecté comme auteur de la review
+            reviews_data['user_id'] = current_user['id']
+            reviews_data['place_id'] = place_id
+
+            # Validation des champs obligatoires
+            if not reviews_data.get('text'):
+                return {'error': 'Review text is required'}, 400
+            if not reviews_data.get('rating'):
+                return {'error': 'Rating is required'}, 400
+
+            # Validation du format et de la plage de la note
+            try:
+                rating = int(reviews_data['rating'])
+                if rating < 1 or rating > 5:
+                    return {'error': 'Rating must be between 1 and 5'}, 400
+            except (ValueError, TypeError):
+                return {'error': 'Rating must be a number between 1 and 5'}, 400
+
+            # Récupération des entités associées (utilisateur et lieu)
+            user = facade.get_user(reviews_data['user_id'])
+            place = facade.get_place(place_id)
+
+            if not user:
+                return {'error': f'User with ID {reviews_data["user_id"]} not found'}, 404
+            if not place:
+                return {'error': f'Place with ID {place_id} not found'}, 404
+
+            # Empêcher l'auto-review
+            if place.owner.id == current_user['id']:
+                return {'error': 'You cannot review your own place'}, 400
+
+            # Empêcher les reviews dupliquées
+            existing_reviews = facade.get_reviews_by_place(place_id)
+            for review in existing_reviews:
+                if review.user.id == current_user['id']:
+                    return {'error': 'You have already reviewed this place'}, 400
+
+            # Création de l'avis
+            review = facade.create_review({
+                'text': reviews_data['text'],
+                'rating': rating,
+                'user_id': reviews_data['user_id'],
+                'place_id': place_id
+            })
+
+            return {
+                'id': review.id,
+                'text': review.text,
+                'rating': review.rating,
+                'user_id': user.id,
+                'place_id': place_id,
+                'created_at': review.created_at.isoformat()
+            }, 201
+
+        except Exception as e:
+            print(f"Error creating review for place: {str(e)}")
+            return {'error': 'An unexpected error occurred'}, 500
+
+    def options(self, place_id):
+        """Répondre OK à la requête OPTIONS pour CORS"""
+        return '', 200
