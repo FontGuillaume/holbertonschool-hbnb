@@ -100,21 +100,46 @@ main {
 }
 
 .place-card {
+    width: 420px;
+    min-height: 340px;
+    margin: 32px auto;
+    padding: 22px 24px;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px #bfa04655;
+    background: #221d06;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 24px;
+    font-size: 1.22em;
+    transition: transform 0.2s;
 }
 
 .place-img {
-    width: 120px;
-    height: 120px;
+    width: 96%;
+    max-width: 370px;
+    height: 210px;
     object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px #000a;
-    border: 2px solid #c9a13b;
+    border-radius: 14px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px #07050188;
+    border: 3px solid #af8f3e;
 }
+
 .place-info {
-    flex: 1;
+    width: 100%;
+    text-align: center;
+}
+
+.place-info h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #e0d8be;
+    text-shadow: 0 0 8px #fffbe6;
+}
+
+.place-info p {
+    font-size: 1.18em;
+    margin: 8px 0;
 }
 
 .details-button {
@@ -248,4 +273,53 @@ footer {
     object-fit: cover;        /* pour un cadrage propre */
     border-radius: 10px;      /* optionnel, coins arrondis */
     box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* optionnel, ombre douce */
+}
+
+/* Styles pour la section des filtres */
+#filter {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #c9a13b;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #3e2c14 80%, #6b3e0a 100%);
+    box-shadow: 0 2px 8px #000a;
+}
+
+.price-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 10px;
+}
+
+.icon-price {
+    width: 24px;
+    height: 24px;
+}
+
+#price-filter {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #c9a13b;
+    border-radius: 6px;
+    background: #2c1a09;
+    color: #f8e9c1;
+    font-size: 1em;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10"%3E%3Cpath fill="%23c9a13b" d="M5 7l-3-3h6z"/%3E%3C/svg%3E'), linear-gradient(to bottom, #2c1a09, #1f1206);
+    background-repeat: no-repeat, repeat;
+    background-position: right 10px top 50%, 0 0;
+    background-size: 12px auto, 100%;
+}
+
+#price-filter option {
+    background: #2c1a09;
+    color: #f8e9c1;
+}
+
+#price-filter:hover {
+    border-color: #ffd700;
+    box-shadow: 0 0 8px #ffd70099;
 }
