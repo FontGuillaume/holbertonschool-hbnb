@@ -6,6 +6,7 @@
 // Au chargement du DOM, on initialise l'authentification et les handlers de formulaires
 document.addEventListener('DOMContentLoaded', () => {
     checkAuthentication();
+    fetchPlaces(getCookie('token'));
 
     // Gestion du formulaire de login
     const loginForm = document.getElementById('login-form');
@@ -68,6 +69,7 @@ function checkAuthentication() {
     const token = getCookie('token');
     const loginLink = document.getElementById('login-link');
     const addReviewSection = document.getElementById('add-review');
+    const placeId = getPlaceIdFromURL();
 
     // Page d'accueil : gestion du lien login et chargement des lieux
     if (loginLink) {
@@ -85,9 +87,11 @@ function checkAuthentication() {
             addReviewSection.style.display = 'none';
         } else {
             addReviewSection.style.display = 'block';
-            const placeId = getPlaceIdFromURL();
-            fetchPlaceDetails(token, placeId);
         }
+    }
+    // Appeler fetchPlaceDetails pour tout le monde
+    if (placeId) {
+        fetchPlaceDetails(token, placeId);
     }
 }
 
@@ -108,11 +112,10 @@ function getCookie(name) {
  * Récupère la liste des lieux via l'API et les affiche.
  */
 async function fetchPlaces(token) {
+    const headers = token ? { 'Authorization': 'Bearer ' + token } : {};
     const response = await fetch('http://127.0.0.1:5000/api/v1/places/', {
         method: 'GET',
-        headers: {
-            'Authorization': 'Bearer ' + token
-        }
+        headers: headers
     });
     console.log('fetchPlaces appelée');
 
