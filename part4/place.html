@@ -1,44 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Métadonnées de la page -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Place Details</title>
+    <!-- Feuille de style principale -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Favicon du site -->
     <link rel="shortcut icon" type="image/png" href="images/favwow.png">
 </head>
 <body>
+    <!-- ====== En-tête du site ====== -->
     <header>
+        <!-- Logo cliquable qui ramène à l'accueil -->
         <a href="index.html">
             <img src="images/icon.png" alt="WoW Icon" class="wow-icon">
         </a>
+        <!-- Titre principal du site -->
         <h1 class="wow-title">Welcome to HBnB</h1>
+        <!-- Navigation principale -->
         <nav>
+            <!-- Lien vers la page d'accueil -->
             <a href="index.html" class="login-button">Home</a>
+            <!-- Lien vers la page de connexion (affiché/masqué dynamiquement) -->
             <a href="login.html" id="login-link" class="login-button">Login</a>
         </nav>
     </header>
+
     <main>
+        <!-- ====== Section des détails du lieu ====== -->
         <section class="place-details">
+            <!-- Titre du lieu (rempli dynamiquement) -->
             <h2 id="place-title"></h2>
             <div class="place-info">
+                <!-- Informations sur l'hôte -->
                 <p><strong>Host:</strong><span id="place-host"></span></p>
+                <!-- Prix par nuit -->
                 <p><strong>Price per night:</strong> <span id="place-price"></span></p>
+                <!-- Description du lieu -->
                 <p><strong>Description:</strong> <span id="place-description"></span></p>
+                <!-- Liste des commodités -->
                 <p><strong>Amenities:</strong> <span id="place-amenities"></span></p>
+                <!-- Image principale du lieu -->
                 <img id="place-image" />
             </div>
         </section>
         
-        
+        <!-- ====== Section des avis ====== -->
         <section id="reviews">
             <h3>Reviews</h3>
+            <!-- Liste des avis (remplie dynamiquement) -->
             <div id="place-reviews"></div>
+            <!-- Formulaire d'ajout d'avis (affiché seulement si connecté) -->
             <form id="add-review" class="add-review form">
                 <h4>Add a Review</h4>
+                <!-- Champ pour le nom de l'utilisateur (optionnel selon ton backend) -->
                 <label for="review-user">Your Name:</label>
                 <input type="text" id="review-user" name="user">
 
+                <!-- Sélecteur de note -->
                 <label for="review-rating">Rating:</label>
                 <select id="review-rating" name="rating" required>
                     <option value="">Select</option>
@@ -49,15 +70,24 @@
                     <option value="5">5</option>
                 </select>
 
+                <!-- Champ commentaire -->
                 <label for="review-comment">Comment:</label>
                 <textarea id="review-comment" name="comment" required></textarea>
 
+                <!-- Bouton de soumission -->
                 <button type="submit" class="login-button">Submit Review</button>
             </form>
+            <!-- Zone d'affichage des messages de succès/erreur pour l'ajout d'avis -->
             <div id="review-message"></div>
         </section>
     </main>
-    <footer>2025 Holberton-HBnB all rights reserved</footer>
+
+    <!-- ====== Pied de page ====== -->
+    <footer>
+        2025 Holberton-HBnB all rights reserved
+    </footer>
+
+    <!-- Script principal qui gère l'affichage dynamique et l'authentification -->
     <script src="scripts.js"></script>
 </body>
 </html>

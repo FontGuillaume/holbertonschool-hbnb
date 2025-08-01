@@ -2,38 +2,59 @@
 <html lang="en">
 
 <head>
+    <!-- Métadonnées de la page -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <!-- Feuille de style principale -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Favicon du site -->
     <link rel="shortcut icon" type="image/png" href="images/favwow.png">
 </head>
 
 <body>
+    <!-- ====== En-tête du site ====== -->
     <header>
+        <!-- Logo cliquable qui ramène à l'accueil -->
         <a href="index.html">
             <img src="images/icon.png" alt="WoW Icon" class="wow-icon">
         </a>
+        <!-- Titre principal du site -->
         <h1 class="wow-title">Welcome to HBnB</h1>
+        <!-- Navigation principale -->
         <nav>
+            <!-- Lien vers la page d'accueil -->
             <a href="index.html" class="login-button">Home</a>
+            <!-- Lien vers la page de connexion (affiché/masqué dynamiquement) -->
             <a href="login.html" id="login-link" class="login-button">Login</a>
         </nav>
     </header>
+
     <main>
+        <!-- ====== Formulaire de connexion ====== -->
         <form id="login-form" class="login-bar">
             <h2>Login</h2>
+            <!-- Champ email (obligatoire) -->
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
 
+            <!-- Champ mot de passe (obligatoire) -->
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
 
+            <!-- Bouton de soumission du formulaire -->
             <button type="submit" class="login-button">Login</button>
         </form>
+        <!-- Zone d'affichage des erreurs de connexion -->
         <div id="login-error"></div>
     </main>
-    <footer>2025 Holberton-HBnB all rights reserved</footer>
+
+    <!-- ====== Pied de page ====== -->
+    <footer>
+        2025 Holberton-HBnB all rights reserved
+    </footer>
+
+    <!-- Script principal qui gère l'authentification et l'affichage dynamique -->
     <script src="scripts.js"></script>
 </body>
 

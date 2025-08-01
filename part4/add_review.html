@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Métadonnées de la page -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Review</title>
+    <!-- Feuille de style principale -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Favicon du site -->
     <link rel="shortcut icon" type="image/png" href="images/favwow.png">
 </head>
 <body>
+    <!-- ====== En-tête du site ====== -->
     <header>
+        <!-- Logo du site (non cliquable ici) -->
         <img src="images/logo.png" alt="HbnB Logo" class="logo">
+        <!-- Navigation principale -->
         <nav>
+            <!-- Lien vers la page d'accueil -->
             <a href="index.html">Home</a>
+            <!-- Lien vers la page de connexion -->
             <a href="login.html" class="login-button">Login</a>
         </nav>
     </header>
+
     <main>
+        <!-- ====== Section du formulaire d'ajout d'avis ====== -->
         <section class="add-review">
             <h2>Add a Review</h2>
+            <!-- Formulaire d'ajout d'avis -->
             <form class="form">
+                <!-- Champ pour le nom de l'utilisateur (obligatoire) -->
                 <label for="review-user">Your Name:</label>
                 <input type="text" id="review-user" name="user" required>
 
+                <!-- Sélecteur de note (obligatoire) -->
                 <label for="review-rating">Rating:</label>
                 <select id="review-rating" name="rating" required>
                     <option value="">Select</option>
@@ -32,14 +45,22 @@
                     <option value="5">5</option>
                 </select>
 
+                <!-- Champ commentaire (obligatoire) -->
                 <label for="review-comment">Comment:</label>
                 <textarea id="review-comment" name="comment" required></textarea>
 
+                <!-- Bouton de soumission du formulaire -->
                 <button type="submit" class="login-button">Submit Review</button>
             </form>
         </section>
     </main>
-    <footer>2025 Holberton-HBnB all rights reserved</footer>
+
+    <!-- ====== Pied de page ====== -->
+    <footer>
+        2025 Holberton-HBnB all rights reserved
+    </footer>
+
+    <!-- Script principal pour la gestion dynamique et l'envoi du formulaire -->
     <script src="scripts.js"></script>
 </body>
 </html>
